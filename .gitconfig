@@ -14,5 +14,8 @@
     s = status
     ps = push
 
+[color]
+	ui = true
+
 [core]
 	editor = vim
