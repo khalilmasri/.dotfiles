@@ -1,0 +1,15 @@
+{
+  "languageserver": {
+    "ccls": {
+      "command": "ccls",
+      "coc.preferences.formatOnSaveFiletypes": ["ccls", "c"],
+      "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"],
+      "rootPatterns": [".ccls", "compile_commands.json", ".git/", ".hg/"],
+      "initializationOptions": {
+        "cache": {
+          "directory": "/tmp/ccls"
+        }
+      }
+    }
+  }
+}
