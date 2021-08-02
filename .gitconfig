@@ -1,0 +1,18 @@
+[alias]
+    a = add
+    af = add -f
+    aa = add .
+    b = branch
+    bd = branch -D
+    cm = commit -m
+    c = commit
+    co = checkout
+    cob = checkout -b
+    d = diff
+    f = fetch
+    pl = pull
+    s = status
+    ps = push
+
+[core]
+	editor = vim
