@@ -1,25 +1,21 @@
-" Plugins
-source ~/.vim/vim-config/plug.vim
+" Plugins manager ----------------------------------------------
+source ~/.vim/vim-config/plug_manager.vim
 
-" Vim defaults
+" Vim defaults -------------------------------------------------
 source ~/.vim/vim-config/vimrc.vim
 
+" Plugins config -----------------------------------------------
+
 " Themes
-source ~/.vim/vim-config/theme.vim
-
+source ~/.vim/vim-config/plugin/theme.vim
 " Keys
-source ~/.vim/vim-config/keys.vim
-
+source ~/.vim/vim-config/plugin/keys.vim
 " COC
-source ~/.vim/vim-config/coc.vim
-
-" Caps and Repeat rate 
-silent :!bash ~/vimscript.sh
-
+source ~/.vim/vim-config/plugin/coc.vim
 " Sneak
-source ~/.vim/vim-config/sneak.vim
-
+source ~/.vim/vim-config/plugin/sneak.vim
 " Quick scope
-source ~/.vim/vim-config/quickscope.vim
+source ~/.vim/vim-config/plugin/quickscope.vim
 
-
+" Caps and Repeat rate ----------------------------------------
+silent :!bash ~/vimscript.sh
