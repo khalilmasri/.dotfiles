@@ -1,6 +1,6 @@
 nnoremap <SPACE> <Nop>
 let mapleader=" "
-let g:mapleader = "\<Space>" 
+" let g:mapleader = "\<Space>" 
 
 nnoremap <silent> <leader> :silent WhichKey '<Space>'<CR>
 vnoremap <silent> <leader> :silent <c-u> :silent WhichKeyVisual '<Space>'<CR>
@@ -26,12 +26,14 @@ let g:which_key_map['w'] = [ ':w'               , 'save' ]
 let g:which_key_map['q'] = [ ':q!'              , 'Quit no save' ]
 let g:which_key_map['f'] = [ 'gg=G:wq <CR>'     , 'Format save and quit' ] 
 nnoremap <silent> <leader>f <CR>gg=G :wq<CR>
+let g:which_key_map['c'] = [ 'vgc'              , 'comment line']
+let g:which_key_map['x'] = [ 'gc'              , 'comment more than one line']
 let g:which_key_map['e'] = [ ':Ex'              , 'Explorer']
 
 " Change background
 let g:which_key_map['l'] = [ ':bn'              , 'next buffer' ]
 let g:which_key_map['h'] = [ ':bp'              , 'previous buffer' ]
-let g:which_key_map['c'] = [ ':bd'              , 'Close buffer' ]
+let g:which_key_map['z'] = [ ':bd'              , 'Close buffer' ]
 let g:which_key_map['b'] = [ ':Buffers'         , 'List buffer' ]
 
 " FZF
@@ -85,7 +87,7 @@ let g:which_key_map.b = {
       \ '?' : ['Buffers'   , 'fzf-buffer']      ,
       \ }
 
-let g:which_key_map.c = {
+let g:which_key_map.v = {
       \ 'name' : '+background' ,
       \ 't' : [':hi Normal guibg=NONE ctermbg=black'        , 'Transperant background'] ,
       \ 'b' : [':hi Normal guibg=#0f1419 ctermbg=black'     , 'normal background']      ,
