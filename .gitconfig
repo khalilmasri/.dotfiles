@@ -3,6 +3,15 @@
     email   = khalil.1996km@gmail.com
 
 [alias]
+    g       = git
+    ga      = git add
+    gaa     = git add . 
+    gaf     = git add -f
+    gst      = git status
+    gcm     = git commit -m
+    gm      = git commit
+    gps     = git push
+    gpl     = git pull
     a       = add
     af      = add -f
     aa      = add .
