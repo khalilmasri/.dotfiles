@@ -1,7 +1,7 @@
 # update all ------------------------------------------------------------------------------------------------------------------------------------------
-# sudo apt update 
-# sudo apt upgrade
-# curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+sudo apt update 
+sudo apt upgrade
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
 
 # npm and node.js -------------------------------------------------------------------------------------------------------------------------------------
 # First, clear the npm cache:
