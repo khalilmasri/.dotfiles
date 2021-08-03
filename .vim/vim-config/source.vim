@@ -1,7 +1,7 @@
 " Plugins manager ----------------------------------------------
 source ~/.vim/vim-config/plug_manager.vim
 
-" Vim defaults -------------------------------------------------
+" Vim defaults --------------------------------------------------
 source ~/.vim/vim-config/vimrc.vim
 
 " Plugins config -----------------------------------------------
