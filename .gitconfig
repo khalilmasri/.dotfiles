@@ -7,7 +7,7 @@
     ga      = git add
     gaa     = git add . 
     gaf     = git add -f
-    gst      = git status
+    gst     = git status
     gcm     = git commit -m
     gm      = git commit
     gps     = git push
