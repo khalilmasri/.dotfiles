@@ -24,12 +24,11 @@ highlight default link WhichKeyDesc      Function
 " Single mappings
 let g:which_key_map['w'] = [ ':w'               , 'save' ]
 let g:which_key_map['q'] = [ ':q!'              , 'Quit no save' ]
-let g:which_key_map['f'] = [ 'gg=G:wq <CR>'     , 'Format save and quit' ] 
-nnoremap <silent> <leader>f <CR>gg=G :wq<CR>
+let g:which_key_map['`'] = [ 'gg=G'             , 'Format' ] 
 let g:which_key_map['c'] = [ 'vgc'              , 'comment line']
-let g:which_key_map['x'] = [ 'gc'              , 'comment more than one line']
+let g:which_key_map['x'] = [ 'gc'               , 'comment more than one line']
 let g:which_key_map['e'] = [ ':Ex'              , 'Explorer']
-let g:which_key_map['\'] = [ '<c-\>'              , 'change between ex']
+let g:which_key_map['\'] = [ '<c-\>'            , 'change between ex']
 
 " Change background
 let g:which_key_map['l'] = [ ':bn'              , 'next buffer' ]
@@ -76,23 +75,23 @@ let g:which_key_map.s = {
             \ }
 
 let g:which_key_map.b = {
-      \ 'name' : '+buffer' ,
-      \ '1' : ['b1'        , 'buffer 1']        ,
-      \ '2' : ['b2'        , 'buffer 2']        ,
-      \ 'd' : ['bd'        , 'delete-buffer']   ,
-      \ 'f' : ['bfirst'    , 'first-buffer']    ,
-      \ 'h' : ['Startify'  , 'home-buffer']     ,
-      \ 'l' : ['blast'     , 'last-buffer']     ,
-      \ 'n' : ['bnext'     , 'next-buffer']     ,
-      \ 'p' : ['bprevious' , 'previous-buffer'] ,
-      \ '?' : ['Buffers'   , 'fzf-buffer']      ,
-      \ }
+            \ 'name' : '+buffer' ,
+            \ '1' : ['b1'        , 'buffer 1']        ,
+            \ '2' : ['b2'        , 'buffer 2']        ,
+            \ 'd' : ['bd'        , 'delete-buffer']   ,
+            \ 'f' : ['bfirst'    , 'first-buffer']    ,
+            \ 'h' : ['Startify'  , 'home-buffer']     ,
+            \ 'l' : ['blast'     , 'last-buffer']     ,
+            \ 'n' : ['bnext'     , 'next-buffer']     ,
+            \ 'p' : ['bprevious' , 'previous-buffer'] ,
+            \ '?' : ['Buffers'   , 'fzf-buffer']      ,
+            \ }
 
 let g:which_key_map.v = {
-      \ 'name' : '+background' ,
-      \ 't' : [':hi Normal guibg=NONE ctermbg=black'        , 'Transperant background'] ,
-      \ 'b' : [':hi Normal guibg=#0f1419 ctermbg=black'     , 'normal background']      ,
-      \ }
+            \ 'name' : '+background' ,
+            \ 't' : [':hi Normal guibg=NONE ctermbg=black'        , 'Transperant background'] ,
+            \ 'b' : [':hi Normal guibg=#0f1419 ctermbg=black'     , 'normal background']      ,
+            \ }
 " Key binds
 vnoremap J :m '<+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
