@@ -285,6 +285,9 @@ myKeys =
         -- , ("M-C-u", withFocused (sendMessage . UnMerge))
         , ("M-C-.", onGroup W.focusUp')    -- Switch focus to next tab
         , ("M-C-,", onGroup W.focusDown')  -- Switch focus to prev tab
+    
+    -- Screenshot
+        , ("<Print>", spawn "flameshot gui")
         ]
 -- END_KEYS
 
