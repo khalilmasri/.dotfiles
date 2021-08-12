@@ -21,11 +21,11 @@ Config { font    = "xft:Font Awesome 5 Free Solid:pixelsize=12, xft:Ubuntu:weigh
                       -- Network up and down
                     , Run Network "enp6s0" ["-t", "<fn=2>\xf0ab</fn>  <rx>kb  <fn=2>\xf0aa</fn>  <tx>kb"] 20
                       -- Cpu usage in percent
-                    , Run Cpu ["-t", "<fn=2>\xf108</fn>  cpu: (<total>%)","-H","50","--high","red"] 20
+                    , Run Cpu ["-t", "<fn=2>\xf108</fn>  CPU: (<total>%)","-H","50","--high","red"] 20
                       -- Ram used number and percent
-                    , Run Memory ["-t", "<fn=2>\xf233</fn>  mem: <used>M (<usedratio>%)"] 20
+                    , Run Memory ["-t", "<fn=2>\xf233</fn>  RAM: <used>M (<usedratio>%)"] 20
                       -- Disk space free
-                    , Run DiskU [("/", "<fn=2>\xf0c7</fn>  hdd: <free> free")] [] 60
+                    , Run DiskU [("/", "<fn=2>\xf0c7</fn>  SPC: <free> free")] [] 60
                       -- Runs custom script to check for pacman updates.
                       -- This script is in my dotfiles repo in .local/bin.
                     , Run Com "/home/khalil/.local/bin/pacupdate" [] "pacupdate" 36000
