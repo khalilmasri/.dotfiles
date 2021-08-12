@@ -32,6 +32,7 @@ import XMonad.Hooks.DynamicLog (dynamicLogWithPP, wrap, xmobarPP, xmobarColor, s
 import XMonad.Hooks.EwmhDesktops  -- for some fullscreen events, also for xcomposite in obs.
 import XMonad.Hooks.ManageDocks (avoidStruts, docksEventHook, manageDocks, ToggleStruts(..))
 import XMonad.Hooks.ManageHelpers (isFullscreen, doFullFloat, doCenterFloat)
+import XMonad.ManageHook
 import XMonad.Hooks.ServerMode
 import XMonad.Hooks.SetWMName
 import XMonad.Hooks.WorkspaceHistory
@@ -140,7 +141,7 @@ tall     = renamed [Replace "tall"]
            $ addTabs shrinkText myTabTheme
            $ subLayout [] (smartBorders Simplest)
            $ limitWindows 12
-           $ mySpacing 4
+           $ mySpacing 8
            $ ResizableTall 1 (3/100) (1/2) []
 magnify  = renamed [Replace "magnify"]
            $ smartBorders
@@ -149,7 +150,7 @@ magnify  = renamed [Replace "magnify"]
            $ subLayout [] (smartBorders Simplest)
            $ magnifier
            $ limitWindows 12
-           $ mySpacing 4
+           $ mySpacing 8
            $ ResizableTall 1 (3/100) (1/2) []
 monocle  = renamed [Replace "monocle"]
            $ smartBorders
@@ -166,7 +167,7 @@ grid     = renamed [Replace "grid"]
            $ addTabs shrinkText myTabTheme
            $ subLayout [] (smartBorders Simplest)
            $ limitWindows 12
-           $ mySpacing 4
+           $ mySpacing 8
            $ mkToggle (single MIRROR)
            $ Grid (16/10)
 
@@ -213,11 +214,11 @@ myManageHook = composeAll
      , className =? "file_progress"                 --> doFloat
      , className =? "dialog"                        --> doFloat
      , className =? "download"                      --> doFloat
-     , className =? "google-chrome-stable"          --> doShift (myWorkspaces !! 1)
-     , className =? "com.slack.Slack"               --> doShift (myWorkspaces !! 2)
+     , className =? "Google-chrome"                 --> doShift (myWorkspaces !! 1)
+     , className =? "Slack"                         --> doShift (myWorkspaces !! 2)
      , className =? "discord"                       --> doShift (myWorkspaces !! 2)
-     , className =? "alacritty"                     --> doShift (myWorkspaces !! 0) 
-     , className =? "com.spotify.Client"            --> doShift (myWorkspaces !! 3) 
+     , className =? "Alacritty"                     --> doShift (myWorkspaces !! 0) 
+     , title =? "Spotify Premium"                       --> doShift (myWorkspaces !! 4)
      , isFullscreen -->  doFullFloat
      ] 
 
