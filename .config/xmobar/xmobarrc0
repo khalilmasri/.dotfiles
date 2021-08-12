@@ -25,7 +25,7 @@ Config { font    = "xft:Font Awesome 5 Free Solid:pixelsize=12, xft:Ubuntu:weigh
                       -- Ram used number and percent
                     , Run Memory ["-t", "<fn=2>\xf233</fn>  RAM: <used>M (<usedratio>%)"] 20
                       -- Disk space free
-                    , Run DiskU [("/", "<fn=2>\xf0c7</fn>  SPC: <free> free")] [] 60
+                    , Run DiskU [("/", "<fn=2>\xf0c7</fn>  Space: <free> free")] [] 60
                       -- Runs custom script to check for pacman updates.
                       -- This script is in my dotfiles repo in .local/bin.
                     , Run Com "/home/khalil/.local/bin/pacupdate" [] "pacupdate" 36000
