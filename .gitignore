@@ -2,3 +2,5 @@
 !.install.sh
 !README.md
 !.vim
+./.vim/undodir
+
