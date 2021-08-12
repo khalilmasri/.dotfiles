@@ -234,7 +234,7 @@ myKeys =
         , ("M-S-d", spawn "dmenu_run -i -p \"Run: \"") -- Dmenu
 
     -- KB_GROUP Useful programs to have a keybinding for launch
-        , ("M-t", spawn (myTerminal))
+        , ("M-t", spawn (myTerminal ++ " "))
         , ("M-b", spawnOn "web" (myBrowser))
         , ("M-M1-h", spawn (myTerminal ++ " -e htop"))
 
