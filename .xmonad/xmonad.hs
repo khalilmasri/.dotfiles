@@ -140,7 +140,7 @@ tall     = renamed [Replace "tall"]
            $ addTabs shrinkText myTabTheme
            $ subLayout [] (smartBorders Simplest)
            $ limitWindows 12
-           $ mySpacing 4
+           $ mySpacing 2
            $ ResizableTall 1 (3/100) (1/2) []
 magnify  = renamed [Replace "magnify"]
            $ smartBorders
@@ -183,7 +183,7 @@ myTabTheme = def { fontName            = myFont
 -- Theme for showWName which prints current workspace when you change workspaces.
 myShowWNameTheme :: SWNConfig
 myShowWNameTheme = def
-    { swn_font              = "xft:Ubuntu:bold:size=60"
+    { swn_font              = "xft:Font Awesome 5 Free Solid:pixelsize=50"
     , swn_fade              = 1.0
     , swn_bgcolor           = "#1c1f24"
     , swn_color             = "#ffffff"
@@ -200,7 +200,7 @@ myLayoutHook = avoidStruts $ mouseResize $ windowArrange $ T.toggleLayouts float
                                  ||| grid
 
 -- myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 "]
-myWorkspaces = ["dev", "web", "chat", "music", "TV"]
+myWorkspaces = [" \61728 ", " \62162 ", " \61574 ", " \61441 ", " \62060 "]
 myWorkspaceIndices = M.fromList $ zipWith (,) myWorkspaces [1..] -- (,) == \x y -> (x,y)
 
 clickable ws = "<action=xdotool key super+"++show i++">"++ws++"</action>"
@@ -213,11 +213,11 @@ myManageHook = composeAll
      , className =? "file_progress"                 --> doFloat
      , className =? "dialog"                        --> doFloat
      , className =? "download"                      --> doFloat
-     , className =? "google-chrome-stable"          --> doShift "web"
-     , className =? "com.slack.Slack"               --> doShift "chat"
-     , className =? "discord"                       --> doShift "chat"
-     , className =? "alacritty"                     --> doShift "dev"
-     , className =? "com.spotify.Client"            --> doShift "music"
+     , className =? "google-chrome-stable"          --> doShift (myWorkspaces !! 1)
+     , className =? "com.slack.Slack"               --> doShift (myWorkspaces !! 2)
+     , className =? "discord"                       --> doShift (myWorkspaces !! 2)
+     , className =? "alacritty"                     --> doShift (myWorkspaces !! 0) 
+     , className =? "com.spotify.Client"            --> doShift (myWorkspaces !! 3) 
      , isFullscreen -->  doFullFloat
      ] 
 
@@ -291,8 +291,8 @@ myKeys =
 main :: IO ()
 main = do
     -- Launching two instances of xmobar on their monitors.
-    xmproc0 <- spawnPipe "xmobar -x 1 $HOME/.config/xmobar/xmobarrc1"
-    xmproc1 <- spawnPipe "xmobar -x 0 $HOME/.config/xmobar/xmobarrc0"
+    xmproc0 <- spawnPipe "xmobar -x 1 $HOME/.config/xmobar/xmobarrc0"
+    xmproc1 <- spawnPipe "xmobar -x 0 $HOME/.config/xmobar/xmobarrc1"
     -- the xmonad, ya know...what the WM is named after!
     xmonad $ ewmh def
         { manageHook         = myManageHook <+> manageDocks
