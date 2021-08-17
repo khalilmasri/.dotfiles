@@ -1,14 +1,15 @@
-    --  IMPORTS
-    --
-    --  
-    -- Base
+---------------------------------------------------------------------------------------------------------
+-- IMPORTS
+-- ------------------------------------------------------------------------------------------------------
+
+-- Base
 import XMonad
 import System.Directory
 import System.IO (hPutStrLn)
 import System.Exit (exitSuccess)
 import qualified XMonad.StackSet as W
 
-    -- Actions
+-- Actions
 import XMonad.Actions.CopyWindow (kill1)
 import XMonad.Actions.CycleWS (Direction1D(..), moveTo, shiftTo, WSType(..), nextScreen, prevScreen)
 import XMonad.Actions.GridSelect
@@ -19,7 +20,7 @@ import XMonad.Actions.WindowGo (runOrRaise)
 import XMonad.Actions.WithAll (sinkAll, killAll)
 import qualified XMonad.Actions.Search as S
 
-    -- Data
+-- Data
 import Data.Char (isSpace, toUpper)
 import Data.Maybe (fromJust)
 import Data.Monoid
@@ -27,7 +28,7 @@ import Data.Maybe (isJust)
 import Data.Tree
 import qualified Data.Map as M
 
-    -- Hooks
+-- Hooks
 import XMonad.Hooks.DynamicLog (dynamicLogWithPP, wrap, xmobarPP, xmobarColor, shorten, PP(..))
 import XMonad.Hooks.EwmhDesktops  -- for some fullscreen events, also for xcomposite in obs.
 import XMonad.Hooks.ManageDocks (avoidStruts, docksEventHook, manageDocks, ToggleStruts(..))
@@ -37,7 +38,7 @@ import XMonad.Hooks.ServerMode
 import XMonad.Hooks.SetWMName
 import XMonad.Hooks.WorkspaceHistory
 
-    -- Controls
+-- Controls
 import           Control.Monad                (void)
 import           Control.Monad.IO.Class
 import qualified Data.Map                     as M
@@ -45,7 +46,8 @@ import           DBus
 import           DBus.Client
 import           Graphics.X11.ExtraTypes.XF86
 import           Graphics.X11.Types
-    -- Layouts
+
+-- Layouts
 import XMonad.Layout.Accordion
 import XMonad.Layout.GridVariants (Grid(Grid))
 import XMonad.Layout.SimplestFloat
@@ -54,7 +56,7 @@ import XMonad.Layout.ResizableTile
 import XMonad.Layout.Tabbed
 import XMonad.Layout.ThreeColumns
 
-    -- Layouts modifiers
+-- Layouts modifiers
 import XMonad.Layout.LayoutModifier
 import XMonad.Layout.LimitWindows (limitWindows, increaseLimit, decreaseLimit)
 import XMonad.Layout.Magnifier
@@ -71,7 +73,7 @@ import XMonad.Layout.WindowNavigation
 import qualified XMonad.Layout.ToggleLayouts as T (toggleLayouts, ToggleLayout(Toggle))
 import qualified XMonad.Layout.MultiToggle as MT (Toggle(..))
 
-   -- Utilities
+-- Utilities
 import XMonad.Util.Dmenu
 import XMonad.Util.EZConfig (additionalKeysP)
 import XMonad.Util.NamedScratchpad
@@ -79,9 +81,9 @@ import XMonad.Util.Run (runProcessWithInput, safeSpawn, spawnPipe)
 import XMonad.Util.SpawnOnce
 import XMonad.Actions.SpawnOn
 
- --
+ ----------------------------------------------------------------------------------------------------------
  -- VARIABLES
- --
+ -----------------------------------------------------------------------------------------------------------
 myFont :: String
 myFont = "xft:SauceCodePro Nerd Font Mono:regular:size=9:antialias=true:hinting=true"
 
@@ -109,7 +111,9 @@ myFocusColor  = "#46d9ff"   -- Border color of focused windows
 windowCount :: X (Maybe String)
 windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace . W.current . windowset
 
+-----------------------------------------------------------------------------------------------------------
 -- STARTUP
+-- --------------------------------------------------------------------------------------------------------
 myStartupHook :: X ()
 myStartupHook = do
     spawnOnce "$HOME/.xmonad/scripts/autostart.sh"
@@ -124,6 +128,9 @@ myStartupHook = do
     spawnOnce "nitrogen --restore &"   -- if you prefer nitrogen to feh
     setWMName "LG3D"
 
+------------------------------------------------------------------------------------------------------------
+-- DEFENTIONS
+------------------------------------------------------------------------------------------------------------
 myColorizer :: Window -> Bool -> X (String, String)
 myColorizer = colorRangeFromClassName
                   (0x28,0x2c,0x34) -- lowest inactive bg
@@ -132,18 +139,15 @@ myColorizer = colorRangeFromClassName
                   (0xc0,0xa7,0x9a) -- inactive fg
                   (0x28,0x2c,0x34) -- active fg
 
--- Defining a bunch of layouts, many that I don't use.
--- limitWindows n sets maximum number of windows displayed for layout.
--- mySpacing n sets the gap size around the windows.
---Makes setting the spacingRaw simpler to write. The spacingRaw module adds a configurable amount of space around windows.
+-------------------------------------------------------------------------------------------------------------
+-- Grids
+-- ----------------------------------------------------------------------------------------------------------
 mySpacing :: Integer -> l a -> XMonad.Layout.LayoutModifier.ModifiedLayout Spacing l a
 mySpacing i = spacingRaw False (Border i i i i) True (Border i i i i) True
-    --
-    ---- Below is a variation of the above except no borders are applied
-    ---- if fewer than two windows. So a single window has no gaps.
+
 mySpacing' :: Integer -> l a -> XMonad.Layout.LayoutModifier.ModifiedLayout Spacing l a
 mySpacing' i = spacingRaw True (Border i i i i) True (Border i i i i) True
-    --
+
 tall     = renamed [Replace "tall"]
            $ smartBorders
            $ windowNavigation
@@ -180,7 +184,9 @@ grid     = renamed [Replace "grid"]
            $ mkToggle (single MIRROR)
            $ Grid (16/10)
 
--- setting colors for tabs layout and tabs sublayout.
+------------------------------------------------------------------------------------------------
+-- Seetings colours
+------------------------------------------------------------------------------------------------
 myTabTheme = def { fontName            = myFont
                  , activeColor         = "#46d9ff"
                  , inactiveColor       = "#313846"
@@ -190,7 +196,9 @@ myTabTheme = def { fontName            = myFont
                  , inactiveTextColor   = "#d0d0d0"
                  }
 
--- Theme for showWName which prints current workspace when you change workspaces.
+-------------------------------------------------------------------------------------------------
+-- THEME & SHOW WORKSPACE
+-------------------------------------------------------------------------------------------------
 myShowWNameTheme :: SWNConfig
 myShowWNameTheme = def
     { swn_font              = "xft:Font Awesome 5 Free Solid:pixelsize=50"
@@ -199,7 +207,9 @@ myShowWNameTheme = def
     , swn_color             = "#ffffff"
     }
 
--- The layout hook
+--------------------------------------------------------------------------------------------------
+-- LAYOUTS HOOK
+--------------------------------------------------------------------------------------------------
 myLayoutHook = avoidStruts $ mouseResize $ windowArrange $ T.toggleLayouts floats
                $ mkToggle (NBFULL ?? NOBORDERS ?? EOT) myDefaultLayout
              where
@@ -209,14 +219,18 @@ myLayoutHook = avoidStruts $ mouseResize $ windowArrange $ T.toggleLayouts float
                                  ||| floats
                                  ||| grid
 
--- myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 "]
+--------------------------------------------------------------------------------------------------
+-- WORKSPACES
+--------------------------------------------------------------------------------------------------
 myWorkspaces = [" \61728 ", " \62162 ", " \61574 ", " \61441 ", " \62060 "]
 myWorkspaceIndices = M.fromList $ zipWith (,) myWorkspaces [1..] -- (,) == \x y -> (x,y)
 
 clickable ws = "<action=xdotool key super+"++show i++">"++ws++"</action>"
     where i = fromJust $ M.lookup ws myWorkspaceIndices
--- Spotify
 
+---------------------------------------------------------------------------------------------------
+-- MANAGE HOOKS
+---------------------------------------------------------------------------------------------------
 myManageHook :: XMonad.Query (Data.Monoid.Endo WindowSet)
 myManageHook = composeAll
      -- 'doFloat' forces a window to float.  Useful for dialog boxes and such.
@@ -224,6 +238,7 @@ myManageHook = composeAll
      , className =? "file_progress"                 --> doFloat
      , className =? "dialog"                        --> doFloat
      , className =? "download"                      --> doFloat
+     , className =? "Yad"                           --> doCenterFloat
      , className =? "Google-chrome"                 --> doShift (myWorkspaces !! 1)
      , className =? "Slack"                         --> doShift (myWorkspaces !! 2)
      , className =? "discord"                       --> doShift (myWorkspaces !! 2)
@@ -234,6 +249,9 @@ myManageHook = composeAll
      , isFullscreen -->  doFullFloat
      ] 
 
+-----------------------------------------------------------------------------------------
+-- KEYBINDS
+-----------------------------------------------------------------------------------------
 -- START_KEYS
 myKeys :: [(String, X ())]
 myKeys =
@@ -245,6 +263,15 @@ myKeys =
 
     -- KB_GROUP Run Prompt
         , ("M-S-d", spawn "dmenu_run -i -p \"Run: \"") -- Dmenu
+
+    -- KB_GROUP Dmenu
+        , ("M-k", spawn "dm-kill")
+        , ("M-r", spawn "dm-reddit")
+        , ("M-m", spawn "dm-man")
+        , ("M-p", spawn "dm-passmenu")
+        , ("M-e", spawn "dm-confedit")
+        , ("M-c", spawn "dm-colpick")
+        , ("M-s", spawn "dm-websearch")
 
     -- KB_GROUP Useful programs to have a keybinding for launch
         , ("M-t", spawn (myTerminal ++ " "))
@@ -263,17 +290,17 @@ myKeys =
 
     -- KB_GROUP Windows navigation
         , ("M-m", windows W.focusMaster)  -- Move focus to the master window
-        , ("M-j", windows W.focusDown)    -- Move focus to the next window
-        , ("M-k", windows W.focusUp)      -- Move focus to the prev window
+        , ("M-<Tab>", windows W.focusDown)    -- Move focus to the next window
+        -- , ("M-k", windows W.focusUp)      -- Move focus to the prev window
         , ("M-S-m", windows W.swapMaster) -- Swap the focused window and the master window
         , ("M-S-j", windows W.swapDown)   -- Swap focused window with next window
         , ("M-S-k", windows W.swapUp)     -- Swap focused window with prev window
         , ("M-<Backspace>", promote)      -- Moves focused window to master, others maintain order
-        , ("M-S-<Tab>", rotSlavesDown)    -- Rotate all windows except master and keep focus in place
+        -- , ("M-S-<Tab>", rotSlavesDown)    -- Rotate all windows except master and keep focus in place
         , ("M-C-<Tab>", rotAllDown)       -- Rotate all the windows in the current stack
 
     -- KB_GROUP Layouts
-        , ("M-<Tab>", sendMessage NextLayout)           -- Switch to next layout
+        , ("M-S-<Tab>", sendMessage NextLayout)           -- Switch to next layout
         , ("M-<Space>", sendMessage (MT.Toggle NBFULL) >> sendMessage ToggleStruts) -- Toggles noborder/full
 
     -- KB_GROUP Increase/decrease windows in the master pane or the stack
@@ -306,13 +333,16 @@ myKeys =
         , ("<XF86AudioMute>", spawn "amixer set Master toggle")
         , ("<XF86AudioLowerVolume>", spawn "amixer set Master 2%- unmute")
         , ("<XF86AudioRaiseVolume>", spawn "amixer set Master 2%+ unmute")
-        , ("M-s", spawn "spotify")
+        , ("M-S-s", spawn "spotify")
     
     	-- KB_GROUP Screenshot
         , ("<Print>", spawn "flameshot gui")
         ]
 -- END_KEYS
 
+-----------------------------------------------------------------------------------------------------
+-- MAIN
+-----------------------------------------------------------------------------------------------------
 main :: IO ()
 main = do
     -- Launching two instances of xmobar on their monitors.
@@ -350,3 +380,4 @@ main = do
               , ppOrder  = \(ws:l:t:ex) -> [ws,l]++ex++[t]                    -- order of things in xmobar
               }
         } `additionalKeysP` myKeys
+
