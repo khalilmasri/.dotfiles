@@ -37,6 +37,14 @@ import XMonad.Hooks.ServerMode
 import XMonad.Hooks.SetWMName
 import XMonad.Hooks.WorkspaceHistory
 
+    -- Controls
+import           Control.Monad                (void)
+import           Control.Monad.IO.Class
+import qualified Data.Map                     as M
+import           DBus
+import           DBus.Client
+import           Graphics.X11.ExtraTypes.XF86
+import           Graphics.X11.Types
     -- Layouts
 import XMonad.Layout.Accordion
 import XMonad.Layout.GridVariants (Grid(Grid))
@@ -106,9 +114,10 @@ myStartupHook :: X ()
 myStartupHook = do
     spawnOnce "$HOME/.xmonad/scripts/autostart.sh"
     spawnOnce "lxsession &"
-    spawnOnce "com.slack.Slack &"
+    spawnOnce "slack &"
     spawnOnce "discord &"
     spawnOnce "picom &"
+    spawnOnce "dunst &"
     spawnOnce "nm-applet &"
     spawnOnce "volumeicon &"
     spawnOnce "trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --transparent true --alpha 0 --tint 0x282c34  --height 22 &"
@@ -206,6 +215,7 @@ myWorkspaceIndices = M.fromList $ zipWith (,) myWorkspaces [1..] -- (,) == \x y 
 
 clickable ws = "<action=xdotool key super+"++show i++">"++ws++"</action>"
     where i = fromJust $ M.lookup ws myWorkspaceIndices
+-- Spotify
 
 myManageHook :: XMonad.Query (Data.Monoid.Endo WindowSet)
 myManageHook = composeAll
@@ -218,7 +228,9 @@ myManageHook = composeAll
      , className =? "Slack"                         --> doShift (myWorkspaces !! 2)
      , className =? "discord"                       --> doShift (myWorkspaces !! 2)
      , className =? "Alacritty"                     --> doShift (myWorkspaces !! 0) 
-     , title =? "Spotify Premium"                       --> doShift (myWorkspaces !! 4)
+     , className =? "Spotify"                       --> doShift (myWorkspaces !! 4) 
+     , className =? "spotify"                       --> doShift (myWorkspaces !! 4) 
+     , title =? "Spotify"                       --> doShift (myWorkspaces !! 4)
      , isFullscreen -->  doFullFloat
      ] 
 
@@ -286,8 +298,17 @@ myKeys =
         -- , ("M-C-u", withFocused (sendMessage . UnMerge))
         , ("M-C-.", onGroup W.focusUp')    -- Switch focus to next tab
         , ("M-C-,", onGroup W.focusDown')  -- Switch focus to prev tab
+		
+		-- KB_GROUP Multimedia Keys
+        , ("<XF86AudioPlay>", spawn ("playerctl --player spotify play-pause"))
+        , ("<XF86AudioPrev>", spawn ("playerctl --player spotify previous"))
+        , ("<XF86AudioNext>", spawn ("playerctl --player spotify next"))
+        , ("<XF86AudioMute>", spawn "amixer set Master toggle")
+        , ("<XF86AudioLowerVolume>", spawn "amixer set Master 2%- unmute")
+        , ("<XF86AudioRaiseVolume>", spawn "amixer set Master 2%+ unmute")
+        , ("M-s", spawn "spotify")
     
-    -- Screenshot
+    	-- KB_GROUP Screenshot
         , ("<Print>", spawn "flameshot gui")
         ]
 -- END_KEYS

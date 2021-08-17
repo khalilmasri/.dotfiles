@@ -9,7 +9,7 @@ function run {
 
 
 #Find out your monitor name with xrandr or arandr (save and you get this line)
-xrandr --output DVI-D-1 --primary --mode 1920x1080 --rotate normal --output HDMI-1 --off --output DP-1 --mode 1920x1080 --rotate normal --left-of DVI-D-1
+xrandr --output DVI-D-0 --primary --mode 1920x1080 --rotate normal --output HDMI-0 --off --output DP-5 --mode 1920x1080 --rotate normal --left-of DVI-D-0
 ~/vimscript.sh
 
 #cursor active at boot
