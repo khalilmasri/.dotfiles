@@ -108,6 +108,10 @@ alias ohmyzsh="mate ~/.oh-my-zsh"
 alias v="vim"
 alias gse="eval $(ssh-agent -s)"
 alias gas="ssh-add ~/.ssh/arch"
+alias gcm="git commit -m"
+alias gaf="git add -f"
+alias gps="git push"
+alias gpl="git pull"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
