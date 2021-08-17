@@ -103,8 +103,11 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias zshconfig="mate ~/.zshrc"
+alias ohmyzsh="mate ~/.oh-my-zsh"
+alias v="vim"
+alias gse="eval $(ssh-agent -s)"
+alias gas="ssh-add ~/.ssh/arch"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -120,3 +123,6 @@ export NVM_DIR="$HOME/.nvm"
 
 ### RANDOM COLOR SCRIPT ###
 colorscript random
+
+
+# ALIAS
