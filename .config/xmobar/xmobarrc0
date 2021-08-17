@@ -27,7 +27,7 @@ Config { font    = "xft:Font Awesome 5 Free Solid:pixelsize=12, xft:Ubuntu:weigh
                       -- Disk space free
                     , Run DiskU [("/", "<fn=2>\xf0c7</fn>  Space: <free> free")] [] 60
                       -- Runs custom script to check for pacman updates.
-                    , Run Com "/bin/bash" ["-c","~/.config/xmobar/spotify.sh"] "music" 5 
+                    , Run Com "/bin/bash" ["-c","~/.config/xmobar/spotify.sh"] "music" 6
                       -- This script is in my dotfiles repo in .local/bin.
                     , Run Com "/home/khalil/.config/xmobar/pacupdate" [] "pacupdate" 36000
                       -- Runs a standard shell command 'uname -r' to get kernel version
