@@ -139,6 +139,7 @@ myColorizer = colorRangeFromClassName
                   (0xc0,0xa7,0x9a) -- inactive fg
                   (0x28,0x2c,0x34) -- active fg
 
+
 -------------------------------------------------------------------------------------------------------------
 -- Grids
 -- ----------------------------------------------------------------------------------------------------------
@@ -365,6 +366,7 @@ main = do
         , borderWidth        = myBorderWidth
         , normalBorderColor  = myNormColor
         , focusedBorderColor = myFocusColor
+        , focusFollowsMouse = False
         , logHook = dynamicLogWithPP $ namedScratchpadFilterOutWorkspacePP $ xmobarPP
               -- the following variables beginning with 'pp' are settings for xmobar.
               { ppOutput = \x -> hPutStrLn xmproc0 x                          -- xmobar on monitor 1
