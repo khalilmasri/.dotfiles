@@ -58,5 +58,6 @@ endif
 " Enable VimRainbow
 let g:rainbow_active = 1
 
-
+" Save with capital :W
+command! W  write
 
