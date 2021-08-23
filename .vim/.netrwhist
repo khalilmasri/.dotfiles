@@ -1,5 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =2
+let g:netrw_dirhistcnt =5
+let g:netrw_dirhist_5='/home/khalil/Documents/elu/ruby/my_bsq'
+let g:netrw_dirhist_4='/home/khalil/Documents/elu/ruby/quest01/ex05'
+let g:netrw_dirhist_3='/home/khalil/Documents/elu/ruby/quest01/ex01'
 let g:netrw_dirhist_2='/home/khalil'
 let g:netrw_dirhist_1='/home/khalil/Downloads/readline [Delivery]'
 let g:netrw_dirhist_0='/home/khalil/Documents/elu/my_blockchain'
@@ -7,6 +10,3 @@ let g:netrw_dirhist_9='/home/khalil/Documents/elu/my_blockchain/src'
 let g:netrw_dirhist_8='/home/khalil/Documents/elu/my_blockchain/include'
 let g:netrw_dirhist_7='/home/khalil/Documents/elu/my_blockchain/src'
 let g:netrw_dirhist_6='/home/khalil/Documents/elu/my_blockchain/include'
-let g:netrw_dirhist_5='/home/khalil/Documents/elu/my_blockchain'
-let g:netrw_dirhist_4='/home/khalil/Documents/elu/my_blockchain/tests'
-let g:netrw_dirhist_3='/home/khalil/Documents/elu/my_blockchain'
