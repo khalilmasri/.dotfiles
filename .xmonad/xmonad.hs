@@ -223,7 +223,7 @@ myLayoutHook = avoidStruts $ mouseResize $ windowArrange $ T.toggleLayouts float
 --------------------------------------------------------------------------------------------------
 -- WORKSPACES
 --------------------------------------------------------------------------------------------------
-myWorkspaces = [" \61728 ", " \62162 ", " \61574 ", " \61441 ", " \62060 "]
+myWorkspaces = [" \61728 ", " \62162 "," \61574 ", " \61441 ", " \62060 " ,"\61612"]
 myWorkspaceIndices = M.fromList $ zipWith (,) myWorkspaces [1..] -- (,) == \x y -> (x,y)
 
 clickable ws = "<action=xdotool key super+"++show i++">"++ws++"</action>"
@@ -288,6 +288,7 @@ myKeys =
     
     -- KB_GROUP Workspaces
         , ("M-.", nextScreen)  -- Switch focus to next monitor
+        , ("M-,", nextScreen)  -- Switch focus to next monitor
 
     -- KB_GROUP Windows navigation
         , ("M-m", windows W.focusMaster)  -- Move focus to the master window
