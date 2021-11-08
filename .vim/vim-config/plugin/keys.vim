@@ -99,6 +99,7 @@ inoremap <c-k> <esc>:m .-2<CR>==
 inoremap <c-j> <esc>:m .+1<CR>==
 vnoremap <C-c> "*y :let @+=@*<CR>
 nnoremap <C-W> <C-W><C-W>
+nnoremap <C-G> <g>g
 
 " Register which key map
 call which_key#register('<Space>', "g:which_key_map")
