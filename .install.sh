@@ -110,6 +110,9 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 # source tmux
 tmux source .tmux.conf
 
+# Install gvim --------------------------------------------------------------------------------------------------------------------------------------------
+sudo pacman -S gvim
+
 # FZF and related -----------------------------------------------------------------------------------------------------------------------------------------
 sudo pacman -S fzf
 sudo pacman -S ripgrep
