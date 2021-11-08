@@ -59,9 +59,9 @@
 
 #### -------------- ARCH
 # Needed packages -------------------------------
-yes | sudo pacman -S xf86-video-fbdev xorg xorg-xinit nitrogen picom
-yes | sudo pacman -S alacritty neofetch firefox xmonad xmonad-contrib xmobar
-yes | sudo pacman -S base-devel git xterm dmenu 
+sudo pacman -S xf86-video-fbdev xorg xorg-xinit nitrogen picom
+sudo pacman -S alacritty neofetch firefox xmonad xmonad-contrib xmobar
+sudo pacman -S base-devel git xterm dmenu 
 
 # npm and node.js -------------------------------------------------------------------------------------------------------------------------------------
 # First, clear the npm cache:
@@ -72,7 +72,7 @@ npm install -g n
 sudo n stable
 
 # Install python --------------------------------
-yes | sudo pacman -S python 
+sudo pacman -S python 
 
 # Get yay ---------------------------------------
 git clone https://aur.archlinux.org/yay-git.git
@@ -80,7 +80,7 @@ cd yay-git
 makepkg -si
 
 # install vim -----------------------------------------------------------------------------------------------------------------------------------------
-yes | sudo pacman -S vim
+sudo pacman -S vim
 
 # autojump --------------------------------------------------------------------------------------------------------------------------------------------
 git clone git://github.com/wting/autojump.git
@@ -89,16 +89,16 @@ cd autojump
 cd ~
 
 # install ctags ---------------------------------------------------------------------------------------------------------------------------------------
-yes | sudo pacman -S ctags
+sudo pacman -S ctags
 
 # install c language servers --------------------------------------------------------------------------------------------------------------------------
-yes | sudo pacman -S ccls
+sudo pacman -S ccls
 
 # taglist ---------------------------------------------------------------------------------------------------------------------------------------------
-yes | sudo pacman -S wget
+sudo pacman -S wget
 wget https://github.com/yegappan/taglist/archive/refs/heads/master.zip ~/Downloads
 # zsh and tmux -----------------------------------------------------------------------------------------------------------------------------------------
-yes | sudo pacman -S zsh tmux ttf-hack ttf-font-awesome
+sudo pacman -S zsh tmux ttf-hack ttf-font-awesome
 # oh my zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 # autosuggestions
@@ -111,14 +111,14 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 tmux source .tmux.conf
 
 # FZF and related -----------------------------------------------------------------------------------------------------------------------------------------
-yes | sudo pacman -S fzf
-yes | sudo pacman -S ripgrep
+sudo pacman -S fzf
+sudo pacman -S ripgrep
 yay -S universal-ctags-git
-yes | sudo pacman -S the_silver_searcher
-yes | sudo pacman -S fd
+sudo pacman -S the_silver_searcher
+sudo pacman -S fd
 
 # Make testing ---------------------------------------------------------------------------------------------------------------------------------------------
-yes | sudo pacman -S check
+sudo pacman -S check
 sudo ln -s /usr/local/lib/libcheck.so.0 /usr/lib/libcheck.so.0
 
 # Install colorscript
@@ -129,4 +129,15 @@ sudo mkdir -p /opt/shell-color-scripts/colorscripts || return 1
 sudo cp -rf colorscripts/* /opt/shell-color-scripts/colorscripts
 sudo cp colorscript.sh /usr/bin/colorscript
 
-
+# Install font 
+git clone https://aur.archlinux.org/ttf-pragmatapro.git
+cd ttf-pragmatapro
+makepkg
+git clone https://aur.archlinux.org/pragmata-pro.git
+cd pragmata-pro
+makepkg
+cd src/PragmataPro
+mv *.* ~/ttf-pragmatapro/src
+cd ~/ttf-pragmata-pro
+makepkg -si
+cd
