@@ -28,7 +28,7 @@ let g:which_key_map['`'] = [ 'gg=G'             , 'Format' ]
 let g:which_key_map['c'] = [ 'vgc'              , 'comment line']
 let g:which_key_map['x'] = [ 'gc'               , 'comment more than one line']
 let g:which_key_map['e'] = [ ':Ex'              , 'Explorer']
-let g:which_key_map['\'] = [ '<c-\>'            , 'change between ex']
+let g:which_key_map['\'] = [ '<C-w> <C-w>'            , 'change between ex']
 
 " Change background
 let g:which_key_map['l'] = [ ':bn'              , 'next buffer' ]
@@ -97,6 +97,7 @@ vnoremap J :m '<+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 inoremap <c-k> <esc>:m .-2<CR>==
 inoremap <c-j> <esc>:m .+1<CR>==
+vnoremap <C-c> "*y :let @+=@*<CR>
 
 " Register which key map
 call which_key#register('<Space>', "g:which_key_map")

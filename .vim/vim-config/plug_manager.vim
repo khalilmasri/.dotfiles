@@ -13,8 +13,12 @@ Plug 'morhetz/gruvbox'
 Plug 'ayu-theme/ayu-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'bluz71/vim-nightfly-guicolors'
+Plug 'joshdick/onedark.vim'
+Plug 'sonph/onehalf', { 'rtp': 'vim' }
 
 " Utility
+Plug 'preservim/nerdtree'
 Plug 'justinmk/vim-sneak'
 Plug 'unblevable/quick-scope'
 Plug 'frazrepo/vim-rainbow'

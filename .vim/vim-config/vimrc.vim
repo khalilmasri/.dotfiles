@@ -58,9 +58,15 @@ endif
 " Enable VimRainbow
 let g:rainbow_active = 1
 
+" NERD TREE
+autocmd VimEnter * NERDTree | wincmd p
+autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+let g:NERDTreeWinPos = "right"
+
 " Make capital commands
 command! W   :w
 command! WQ  :wq 
 command! Wq  :wq 
 command! Q   :q 
+
 
