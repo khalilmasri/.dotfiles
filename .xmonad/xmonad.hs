@@ -119,6 +119,7 @@ myStartupHook = do
     spawnOnce "$HOME/.xmonad/scripts/autostart.sh"
     spawnOnce "lxsession &"
     spawnOnce "slack &"
+    spawnOnce "whatsapp-nativefier &"
     spawnOnce "discord &"
     spawnOnce "picom &"
     spawnOnce "dunst &"
@@ -223,7 +224,7 @@ myLayoutHook = avoidStruts $ mouseResize $ windowArrange $ T.toggleLayouts float
 --------------------------------------------------------------------------------------------------
 -- WORKSPACES
 --------------------------------------------------------------------------------------------------
-myWorkspaces = [" \61728 ", " \62162 "," \61574 ", " \61441 ", " \62060 " ,"\61612"]
+myWorkspaces = [" \61728 ", " \62162 "," \61574 ", " \61441 ", " \62060 " ,"\61612", "\61948", "\61488", "\63437"]
 myWorkspaceIndices = M.fromList $ zipWith (,) myWorkspaces [1..] -- (,) == \x y -> (x,y)
 
 clickable ws = "<action=xdotool key super+"++show i++">"++ws++"</action>"
@@ -243,6 +244,7 @@ myManageHook = composeAll
      , className =? "Google-chrome"                 --> doShift (myWorkspaces !! 1)
      , className =? "Slack"                         --> doShift (myWorkspaces !! 2)
      , className =? "discord"                       --> doShift (myWorkspaces !! 2)
+     , className =? "whatsapp-nativefier-d40211"    --> doShift (myWorkspaces !! 9)
      , className =? "Alacritty"                     --> doShift (myWorkspaces !! 0) 
      , className =? "Spotify"                       --> doShift (myWorkspaces !! 4) 
      , className =? "spotify"                       --> doShift (myWorkspaces !! 4) 
