@@ -3,7 +3,6 @@ set number
 set ruler
 set cursorline
 set showcmd
-set relativenumber
 
 filetype plugin indent on 
 set tabstop=4
