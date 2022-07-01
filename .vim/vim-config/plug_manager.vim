@@ -16,6 +16,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'bluz71/vim-nightfly-guicolors'
 Plug 'joshdick/onedark.vim'
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
+Plug 'EdenEast/nightfox.nvim'
 
 " Utility
 Plug 'preservim/nerdtree'

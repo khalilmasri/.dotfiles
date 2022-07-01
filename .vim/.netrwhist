@@ -1,5 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =1
+let g:netrw_dirhistcnt =4
+let g:netrw_dirhist_4='/home/khalil/Documents/elu/cpp/my_ftp/src'
+let g:netrw_dirhist_3='/home/khalil/Documents/elu/cpp/my_ftp/src/server'
+let g:netrw_dirhist_2='/home/khalil/Documents/elu/cpp/my_ftp'
 let g:netrw_dirhist_1='/home/khalil/Documents/talihmalka/twodigit/include'
 let g:netrw_dirhist_0='/home/khalil/Documents/talihmalka/twodigit'
 let g:netrw_dirhist_9='/home/khalil/Documents/talihmalka/twodigit/src'
@@ -7,6 +10,3 @@ let g:netrw_dirhist_8='/home/khalil/Documents/elu/my_zsh/src'
 let g:netrw_dirhist_7='/home/khalil/Documents/elu/my_zsh/include'
 let g:netrw_dirhist_6='/home/khalil/Documents/elu/my_zsh/src'
 let g:netrw_dirhist_5='/home/khalil/Documents/elu/my_zsh'
-let g:netrw_dirhist_4='/home/khalil/Documents/elu/my_zsh/include'
-let g:netrw_dirhist_3='/home/khalil/Documents/elu/my_sqlite'
-let g:netrw_dirhist_2='/home/khalil/Documents/elu/my_bc'

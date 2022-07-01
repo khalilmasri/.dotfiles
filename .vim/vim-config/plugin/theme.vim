@@ -31,6 +31,8 @@ let g:airline_theme='onehalfdark'
 " let g:onedark_style = 'darker'
 " colorscheme onedark
 
+" Nightfox
+" colorscheme nightfox
 "nightfly
 " colorscheme nightfly
 " let g:moonflyIgnoreDefaultColors = 1
